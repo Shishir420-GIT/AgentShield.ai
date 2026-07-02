@@ -1,0 +1,52 @@
+[project]
+name = "agentshield"
+version = "0.1.0"
+description = "AI Runtime Prevention Platform - Zero Trust AI Security"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0.0",
+    "fastapi>=0.109.0",
+    "uvicorn>=0.27.0",
+    "python-json-logger>=2.0.7",
+    "prometheus-client>=0.19.0",
+    "httpx>=0.26.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "mypy>=1.8.0",
+    "ruff>=0.1.0",
+]
+
+[tool.setuptools]
+packages = ["agentshield"]
+
+[tool.setuptools.package-data]
+agentshield = ["py.typed"]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
